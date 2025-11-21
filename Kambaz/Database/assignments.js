@@ -1,0 +1,218 @@
+export default[
+  {
+    "_id": "A101",
+    "title": "Propulsion Assignment",
+    "course": "RS101",
+    "description": "Introduction to propulsion concepts and calculations.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A102",
+    "title": "Combustion Analysis",
+    "course": "RS101",
+    "description": "Analyze combustion processes and efficiency.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A103",
+    "title": "Nozzle Design Project",
+    "course": "RS101",
+    "description": "Design a nozzle and calculate performance metrics.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A201",
+    "title": "Aerodynamics Quiz",
+    "course": "RS102",
+    "description": "Quiz covering aerodynamics fundamentals.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 50
+  },
+  {
+    "_id": "A202",
+    "title": "Flow Analysis",
+    "course": "RS102",
+    "description": "Analyze flow over airfoils and in ducts.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A203",
+    "title": "Heating Analysis",
+    "course": "RS102",
+    "description": "Study heat transfer in fluids and solids.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A301",
+    "title": "Structural Design Task",
+    "course": "RS103",
+    "description": "Design a structural component for load analysis.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A302",
+    "title": "Orbital Calculations",
+    "course": "RS103",
+    "description": "Perform calculations for satellite orbits.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A303",
+    "title": "Systems Engineering Exam",
+    "course": "RS103",
+    "description": "Comprehensive exam on systems engineering topics.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A401",
+    "title": "Functional Groups Worksheet",
+    "course": "RS104",
+    "description": "Identify and classify various functional groups in organic compounds.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 50
+  },
+  {
+    "_id": "A402",
+    "title": "Reaction Mechanisms Assignment",
+    "course": "RS104",
+    "description": "Draw and explain mechanisms for substitution and elimination reactions.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 75
+  },
+  {
+    "_id": "A403",
+    "title": "Spectroscopy Lab Report",
+    "course": "RS104",
+    "description": "Analyze IR and NMR spectra to determine organic compound structures.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A501",
+    "title": "Coordination Complex Analysis",
+    "course": "RS105",
+    "description": "Study the geometry and bonding of coordination complexes.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 75
+  },
+  {
+    "_id": "A502",
+    "title": "Crystal Field Theory Quiz",
+    "course": "RS105",
+    "description": "Short quiz on crystal field theory and electronic configurations.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 50
+  },
+  {
+    "_id": "A503",
+    "title": "Catalysis Case Study",
+    "course": "RS105",
+    "description": "Write a report analyzing a real-world catalytic process.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A601",
+    "title": "Thermodynamics Problem Set",
+    "course": "RS106",
+    "description": "Solve problems related to chemical thermodynamics and equilibrium.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A602",
+    "title": "Reaction Kinetics Assignment",
+    "course": "RS106",
+    "description": "Calculate rate laws and interpret kinetic data.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A603",
+    "title": "Quantum Chemistry Exam",
+    "course": "RS106",
+    "description": "Test covering wave functions and molecular orbitals.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A701",
+    "title": "Elvish Grammar Quiz",
+    "course": "RS107",
+    "description": "Quiz on sentence structures and vocabulary in Sindarin and Quenya.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 50
+  },
+  {
+    "_id": "A702",
+    "title": "Script Translation Assignment",
+    "course": "RS107",
+    "description": "Translate ancient inscriptions from Quenya to English.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 75
+  },
+  {
+    "_id": "A703",
+    "title": "Cultural Context Essay",
+    "course": "RS107",
+    "description": "Essay analyzing the role of language in shaping Middle-earth cultures.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A801",
+    "title": "Diplomatic Relations Report",
+    "course": "RS108",
+    "description": "Analyze an example of inter-species diplomacy in Middle-earth history.",
+    "availableUntil": "May 6 at 12:00am",
+    "dueDate": "May 13 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A802",
+    "title": "Council Simulation Project",
+    "course": "RS108",
+    "description": "Participate in a simulated Council of Elrond negotiation activity.",
+    "availableUntil": "May 13 at 12:00am",
+    "dueDate": "May 20 at 11:59pm",
+    "points": 100
+  },
+  {
+    "_id": "A803",
+    "title": "War of the Ring Analysis",
+    "course": "RS108",
+    "description": "Write a report analyzing the diplomatic strategies used during the War of the Ring.",
+    "availableUntil": "May 20 at 12:00am",
+    "dueDate": "May 27 at 11:59pm",
+    "points": 100
+  }
+];
