@@ -15,7 +15,9 @@ import QuizzesRoutes from "./Kambaz/Quizzes/routes.js";
 import mongoose from "mongoose";
 
 const CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
-mongoose.connect(CONNECTION_STRING);
+mongoose.connect(CONNECTION_STRING)
+  .then(() => console.log("✅ Connected to MongoDB Atlas successfully!"))
+  .catch((error) => console.error("❌ MongoDB connection error:", error));
 const app = express();
 
 app.use(
@@ -35,7 +37,7 @@ if (process.env.SERVER_ENV !== "development") {
   sessionOptions.cookie = {
     sameSite: "none",
     secure: true,
-    domain: process.env.SERVER_URL,
+    //domain: process.env.SERVER_URL,
   };
 }
 

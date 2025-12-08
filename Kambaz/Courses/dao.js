@@ -1,42 +1,40 @@
+// Kambaz/Courses/dao.js
+import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 
-export default function CoursesDao(db) {
-  function findAllCourses() {
-    return db.courses;
+export default function CoursesDao() {
+  // Dashboard courses – you can keep projection or return all fields
+  async function findAllCourses() {
+    // This keeps only name + description (as in 6.4.2 instructions)
+    return model.find({}, { name: 1, description: 1 });
+    // If you ever need full courses instead, change to: return model.find();
   }
 
-  function findCoursesForEnrolledUser(userId) {
-  const { courses, enrollments } = db;
-  const enrolledCourses = courses.filter((course) =>
-    enrollments.some((enrollment) => enrollment.user === userId && enrollment.course === course._id));
-  return enrolledCourses;
-}
+  async function findCourseById(courseId) {
+    return model.findById(courseId);
+  }
 
-function createCourse(course) {
-  const newCourse = { ...course, _id: uuidv4() };
-  db.courses = [...db.courses, newCourse];
-  return newCourse;
-}
+  async function createCourse(course) {
+    const newCourse = {
+      ...course,
+      _id: course._id || uuidv4(),
+    };
+    return model.create(newCourse);
+  }
 
   function deleteCourse(courseId) {
-    const { courses, enrollments } = db;
-    db.courses = courses.filter((course) => course._id !== courseId);
-    db.enrollments = enrollments.filter(
-      (enrollment) => enrollment.course !== courseId
-  );
-}
+    return model.deleteOne({ _id: courseId });
+  }
 
-function updateCourse(courseId, courseUpdates) {
-  const { courses } = db;
-  const course = courses.find((course) => course._id === courseId);
-  Object.assign(course, courseUpdates);
-  return course;
-}
+  function updateCourse(courseId, courseUpdates) {
+    return model.updateOne({ _id: courseId }, { $set: courseUpdates });
+  }
 
-  return { 
-    findAllCourses,   
-    findCoursesForEnrolledUser,
+  return {
+    findAllCourses,
+    findCourseById,
     createCourse,
     deleteCourse,
-    updateCourse };
+    updateCourse,
+  };
 }
