@@ -47,12 +47,12 @@ app.use(session(sessionOptions));
 app.use(express.json());
 
 // Register routes AFTER middleware
-UserRoutes(app, db);
+UserRoutes(app);
 CourseRoutes(app, db);
 EnrollmentRoutes(app, db);
 ModulesRoutes(app, db);
 AssignmentsRoutes(app, db);
-QuizzesRoutes(app, db);
+QuizzesRoutes(app);
 
 Lab5(app);
 Hello(app);
