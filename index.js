@@ -2,24 +2,29 @@ import express from "express";
 import cors from "cors";
 import Hello from "./Hello.js";
 import Lab5 from "./Lab5/index.js";
-import db from "./Kambaz/Database/index.js";
 import "dotenv/config";
 import session from "express-session";
 import UserRoutes from "./Kambaz/Users/routes.js";
-import "dotenv/config";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import EnrollmentRoutes from "./Kambaz/Enrollments/routes.js";
-import ModulesRoutes from "./Kambaz/Modules/routes.js";     
+import ModulesRoutes from "./Kambaz/Modules/routes.js";
 import AssignmentsRoutes from "./Kambaz/Assignments/routes.js";
 import QuizzesRoutes from "./Kambaz/Quizzes/routes.js";
 import mongoose from "mongoose";
 
-const CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
-mongoose.connect(CONNECTION_STRING)
-  .then(() => console.log("✅ Connected to MongoDB Atlas successfully!"))
-  .catch((error) => console.error("❌ MongoDB connection error:", error));
+// ------------------- MongoDB -------------------
+const CONNECTION_STRING =
+  process.env.DATABASE_CONNECTION_STRING ||
+  "mongodb://127.0.0.1:27017/kambaz";
+
+mongoose
+  .connect(CONNECTION_STRING)
+  .then(() => console.log("Connected to MongoDB Atlas successfully!"))
+  .catch((error) => console.error("MongoDB connection error:", error));
+
 const app = express();
 
+// ------------------- CORS -------------------
 app.use(
   cors({
     credentials: true,
@@ -27,39 +32,37 @@ app.use(
   })
 );
 
-const sessionOptions = {
-  secret: process.env.SESSION_SECRET || "kambaz",
-  resave: false,
-  saveUninitialized: false,
-};
-if (process.env.SERVER_ENV !== "development") {
-  sessionOptions.proxy = true;
-  sessionOptions.cookie = {
-    sameSite: "none",
-    secure: true,
-    //domain: process.env.SERVER_URL,
-  };
-}
+// Required for secure cookies on Render
+app.set("trust proxy", 1);
 
-app.use(session(sessionOptions));
+// ------------------- SESSION -------------------
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "kambaz",
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
+    cookie: {
+      sameSite: "none",
+      secure: true,
+    },
+  })
+);
 
 
-
-// Parse JSON request bodies
 app.use(express.json());
 
-// Register routes AFTER middleware
+// ------------------- ROUTES -------------------
 UserRoutes(app);
-CourseRoutes(app, db);
-EnrollmentRoutes(app, db);
-ModulesRoutes(app, db);
-AssignmentsRoutes(app, db);
+CourseRoutes(app);
+EnrollmentRoutes(app);
+ModulesRoutes(app);
+AssignmentsRoutes(app);
 QuizzesRoutes(app);
-
 Lab5(app);
 Hello(app);
 
-// Start the server
+// ------------------- START SERVER -------------------
 app.listen(process.env.PORT || 4000, () => {
   console.log("Server running on http://localhost:4000");
 });
