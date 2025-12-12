@@ -1,4 +1,3 @@
-// Kambaz/Courses/routes.js
 import CoursesDao from "./dao.js";
 import EnrollmentsDao from "../Enrollments/dao.js";
 
@@ -6,13 +5,11 @@ export default function CourseRoutes(app) {
   const dao = CoursesDao();
   const enrollmentsDao = EnrollmentsDao();
 
-  // GET /api/courses  (used by Dashboard)
   const findAllCourses = async (req, res) => {
     const courses = await dao.findAllCourses();
     res.json(courses);
   };
 
-  // GET /api/users/:userId/courses  (used by "My Courses")
   const findCoursesForEnrolledUser = async (req, res) => {
     let { userId } = req.params;
 
@@ -28,7 +25,6 @@ export default function CourseRoutes(app) {
     res.json(courses);
   };
 
-  // POST /api/courses  (create course, auto-enroll creator)
   const createCourse = async (req, res) => {
     const currentUser = req.session["currentUser"];
     if (!currentUser) {
@@ -41,7 +37,6 @@ export default function CourseRoutes(app) {
     res.json(newCourse);
   };
 
-  // PUT /api/courses/:courseId  (edit course)
   const updateCourse = async (req, res) => {
     const { courseId } = req.params;
     const courseUpdates = req.body;
@@ -50,7 +45,6 @@ export default function CourseRoutes(app) {
     res.json(status);
   };
 
-  // DELETE /api/courses/:courseId  (delete course + its enrollments)
   const deleteCourse = async (req, res) => {
     const { courseId } = req.params;
 
@@ -60,7 +54,6 @@ export default function CourseRoutes(app) {
     res.json(status);
   };
 
-  // POST /api/users/:uid/courses/:cid  (enroll user)
   const enrollUserInCourse = async (req, res) => {
     let { uid, cid } = req.params;
 
@@ -76,7 +69,6 @@ export default function CourseRoutes(app) {
     res.json(status);
   };
 
-  // DELETE /api/users/:uid/courses/:cid  (unenroll user)
   const unenrollUserFromCourse = async (req, res) => {
     let { uid, cid } = req.params;
 
@@ -92,7 +84,12 @@ export default function CourseRoutes(app) {
     res.json(status);
   };
 
-  // Wire routes
+  const findUsersForCourse = async (req, res) => {
+  const { cid } = req.params;
+  const users = await enrollmentsDao.findUsersForCourse(cid);
+  res.json(users);
+  };
+
   app.get("/api/courses", findAllCourses);
   app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
   app.post("/api/courses", createCourse);
@@ -100,4 +97,5 @@ export default function CourseRoutes(app) {
   app.delete("/api/courses/:courseId", deleteCourse);
   app.post("/api/users/:uid/courses/:cid", enrollUserInCourse);
   app.delete("/api/users/:uid/courses/:cid", unenrollUserFromCourse);
+  app.get("/api/courses/:cid/users", findUsersForCourse);
 }
