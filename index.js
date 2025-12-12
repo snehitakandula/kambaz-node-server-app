@@ -24,7 +24,6 @@ mongoose
 
 const app = express();
 
-// ------------------- CORS -------------------
 app.use(
   cors({
     credentials: true,
@@ -32,24 +31,25 @@ app.use(
   })
 );
 
-// Required for secure cookies on Render
-app.set("trust proxy", 1);
+const sessionOptions = {
+  secret: process.env.SESSION_SECRET || "kambaz",
+  resave: false,
+  saveUninitialized: false,
+};
+if (process.env.SERVER_ENV !== "development") {
+  sessionOptions.proxy = true;
+  sessionOptions.cookie = {
+    sameSite: "none",
+    secure: true,
+    domain: process.env.SERVER_URL,
+  };
+}
 
-// ------------------- SESSION -------------------
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "kambaz",
-    resave: false,
-    saveUninitialized: false,
-    proxy: true,
-    cookie: {
-      sameSite: "none",
-      secure: true,
-    },
-  })
-);
+app.use(session(sessionOptions));
 
 
+
+// Parse JSON request bodies
 app.use(express.json());
 
 // ------------------- ROUTES -------------------
