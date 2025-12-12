@@ -13,8 +13,13 @@ export default function QuizzesDao() {
     return model.create(newQuiz);
   };
 
-  const updateQuiz = (quizId, updates) => 
-    model.updateOne({ _id: quizId }, { $set: updates });
+const updateQuiz = (quizId, updates) =>
+  model.findByIdAndUpdate(
+    quizId,
+    { $set: updates },
+    { new: true }
+  );
+
 
   const deleteQuiz = (quizId) => 
     model.deleteOne({ _id: quizId });

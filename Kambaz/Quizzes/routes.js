@@ -30,10 +30,10 @@ export default function QuizzesRoutes(app) {
   // UPDATE
   const updateQuiz = async (req, res) => {
   const { quizId } = req.params;
-  await dao.updateQuiz(quizId, req.body);
-  const updatedQuiz = await dao.findQuizById(quizId);
+  const updatedQuiz = await dao.updateQuiz(quizId, req.body);
   res.json(updatedQuiz);
 };
+
 
 
   // DELETE
